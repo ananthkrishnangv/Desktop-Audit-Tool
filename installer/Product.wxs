@@ -1,0 +1,49 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Name="Enterprise Desktop Security Audit Tool"
+           Manufacturer="Cybersecurity Defense and Research Division"
+           Version="1.0.0"
+           UpgradeCode="4C3781A4-7D68-45F9-823E-963B57917C7F"
+           Scope="perMachine">
+    
+    <MajorUpgrade DowngradeErrorMessage="A newer version of Desktop Security Audit Tool is already installed." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="INSTALLFOLDER" Name="DesktopSecurityAuditTool" />
+    </StandardDirectory>
+
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Component Id="ApplicationShortcut" Guid="7B2F6A19-9D12-4C67-8F12-587A13B45279">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+                  Name="Desktop Security Audit Tool"
+                  Description="Enterprise Security and AI Threat Intelligence Audit Platform"
+                  Target="[INSTALLFOLDER]DesktopAuditTool.WinUI.exe"
+                  WorkingDirectory="INSTALLFOLDER"
+                  Icon="AppIcon.ico" />
+        <RemoveFolder Id="CleanUpShortCut" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\DesktopSecurityAuditTool" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </StandardDirectory>
+
+    <StandardDirectory Id="DesktopFolder">
+      <Component Id="DesktopShortcut" Guid="8E1C2B3A-4D5E-6F7A-8B9C-0D1E2F3A4B5C">
+        <Shortcut Id="ApplicationDesktopShortcut"
+                  Name="Desktop Security Audit Tool"
+                  Description="Enterprise Security and AI Threat Intelligence Audit Platform"
+                  Target="[INSTALLFOLDER]DesktopAuditTool.WinUI.exe"
+                  WorkingDirectory="INSTALLFOLDER"
+                  Icon="AppIcon.ico" />
+        <RegistryValue Root="HKCU" Key="Software\DesktopSecurityAuditTool" Name="desktop_shortcut" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </StandardDirectory>
+
+    <Icon Id="AppIcon.ico" SourceFile="D:\Documents C Drive\Deployment-Servers\DESKTOP Audit Tools\src\DesktopAuditTool.WinUI\Assets\AppIcon.ico" />
+
+    <Feature Id="MainFeature" Title="Desktop Security Audit Tool" Level="1">
+      <Files Include="D:\Documents C Drive\Deployment-Servers\DESKTOP Audit Tools\dist\DesktopAuditTool-WinUI-Portable\**"
+             Directory="INSTALLFOLDER" />
+      <ComponentRef Id="ApplicationShortcut" />
+      <ComponentRef Id="DesktopShortcut" />
+    </Feature>
+  </Package>
+</Wix>

@@ -21,10 +21,12 @@
 - 🇮🇳 **MeitY & STQC e-Governance**: eOffice Smart Card DSC (`SCardSvr`) integrity and NIC network verification.
 - 🔒 **100% Air-Gapped & Zero Data Egress Certified**: Zero outbound network sockets, zero DNS queries, zero cloud telemetry.
 
-### 📦 Portable Release Downloads & Documentation
-- 💾 **[Download Standalone Portable ZIP (v1.0.0)](releases/DesktopAuditTool-WinUI-Portable-v1.0.0.zip)** (~55.5 MB) — Runs on demand on any Windows 10/11 system without installation!
-- 📑 **[Download Technical PDF Documentation Manual](docs/Enterprise-Desktop-Security-Audit-Tool-Documentation.pdf)** (1.62 MB) — Full architectural specification, AI threat model, and user guide.
-- 🔑 **[Release Notes & SHA-256 Checksums](releases/RELEASE_NOTES_v1.0.0.md)**
+### 📦 Release Downloads & Packages
+- ⚡ **[Download Single Portable Executable (`DesktopAuditTool-Portable.exe`)](releases/DesktopAuditTool-Portable.exe)** (69.3 MB) — **Zero installation, self-extract & run!** Extract and runnable on demand on any Windows 10/11 system.
+- 💻 **[Download Windows Installer Package (`DesktopAuditTool-Setup-v1.0.0.msi`)](releases/DesktopAuditTool-Setup-v1.0.0.msi)** (46.1 MB) — Full MSI installer with Start Menu & Desktop shortcuts featuring the official emblem logo.
+- 💾 **[Download Standalone Portable ZIP (`DesktopAuditTool-WinUI-Portable-v1.0.0.zip`)](releases/DesktopAuditTool-WinUI-Portable-v1.0.0.zip)** (55.5 MB) — Traditional zip distribution with WinUI 3 GUI & CLI batch launchers.
+- 📑 **[Download Technical PDF Documentation Manual](releases/Enterprise-Desktop-Security-Audit-Tool-Documentation.pdf)** (1.62 MB) — Comprehensive technical architecture, AI threat model, and regulatory manual.
+- 🔑 **[Release Notes & SHA-256 Checksums](releases/RELEASE_NOTES_v1.0.0.md)** | **[Raw SHA256SUMS.txt](releases/SHA256SUMS.txt)**
 
 ---
 
@@ -193,7 +195,17 @@ To protect air-gapped defense and government terminals against malicious exploit
 
 The platform includes a **100% native Windows WinUI 3 desktop application** built with the **Windows App SDK 2.4.0**, featuring Microsoft Fluent Design, dynamic Mica backdrop, and responsive asynchronous audit telemetry.
 
-#### 1. Instant Launch (Pre-built Portable Binary)
+#### 1. Single Portable Executable (Self-Extract & Run)
+Download `DesktopAuditTool-Portable.exe` and double-click to run immediately on any Windows 10/11 machine without installation or administrative privileges. It self-extracts into local user app data and launches the native WinUI 3 dashboard.
+```powershell
+# Run directly or pass --extract-only to unpack
+.\releases\DesktopAuditTool-Portable.exe
+```
+
+#### 2. Enterprise MSI Installer
+Run `DesktopAuditTool-Setup-v1.0.0.msi` for workstation rollouts. Installs to `C:\Program Files\DesktopAuditTool` and registers Desktop and Start Menu shortcuts with the official emblem logo.
+
+#### 3. Standalone Portable Folder
 Double-click `Run-WinUI-Audit-Tool.bat` in the repository root, or run directly from PowerShell:
 ```powershell
 .\Run-WinUI-Audit-Tool.bat
@@ -201,7 +213,7 @@ Double-click `Run-WinUI-Audit-Tool.bat` in the repository root, or run directly 
 .\dist\DesktopAuditTool-WinUI-Portable\DesktopAuditTool.WinUI.exe
 ```
 
-#### 2. Run / Debug via .NET CLI
+#### 4. Run / Debug via .NET CLI
 ```powershell
 dotnet run --project src/DesktopAuditTool.WinUI -c Release
 ```

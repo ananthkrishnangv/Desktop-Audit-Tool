@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <RootNamespace>DesktopAuditTool.Launcher</RootNamespace>
+    <ApplicationIcon>..\DesktopAuditTool.WinUI\Assets\AppIcon.ico</ApplicationIcon>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <PublishTrimmed>true</PublishTrimmed>
+    <Version>1.0.0</Version>
+    <AssemblyTitle>Enterprise Desktop Security Audit Tool</AssemblyTitle>
+    <Product>Desktop Security Audit Tool - Standalone Portable Suite</Product>
+    <Company>Government &amp; Defense Lab Cybersecurity Division</Company>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\releases\DesktopAuditTool-WinUI-Portable-v1.0.0.zip">
+      <LogicalName>Payload.zip</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
