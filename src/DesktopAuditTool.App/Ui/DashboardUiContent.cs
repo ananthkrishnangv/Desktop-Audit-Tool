@@ -11,10 +11,14 @@ public static class DashboardUiContent
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Enterprise Desktop Security Audit & AI Threat Intelligence Console</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- 100% Offline Air-Gapped: Zero External CDN or Font Dependencies -->
   <style>
+    body, * {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    code, pre, .font-mono {
+      font-family: "Cascadia Code", "Consolas", "Courier New", monospace !important;
+    }
     :root {
       --bg-dark: #07090e;
       --bg-surface: #0e131f;

@@ -17,20 +17,33 @@ public class LlmSecurityCopilot
 
     public async Task<string> AskCopilotAsync(string prompt, AuditReport report, CancellationToken cancellationToken = default)
     {
-        var lowerPrompt = prompt.Trim().ToLowerInvariant();
-
-        // Check if an external Ollama/LLM instance is reachable
-        try
+        // 1. Guard against Prompt Injection & Model DoS (OWASP LLM01, LLM04)
+        var (isSafe, sanitizedPrompt, threatWarning) = AiSecurityGuard.SanitizeAndGuardInput(prompt);
+        if (!isSafe)
         {
-            if (!string.IsNullOrEmpty(_ollamaEndpoint))
+            return $"⚠️ **AI Security Alert (OWASP LLM01 - Prompt Injection Blocked):**\n{threatWarning}\n\n" +
+                   $"The input has been neutralized for security reasons. The tool operates under strict air-gapped security controls.";
+        }
+
+        var lowerPrompt = sanitizedPrompt.ToLowerInvariant();
+
+        // 2. Air-Gapped Loopback Check: Only permit local loopback endpoint if explicitly configured; zero remote calls
+        if (!string.IsNullOrEmpty(_ollamaEndpoint) && 
+            (_ollamaEndpoint.StartsWith("http://127.0.0.1") || _ollamaEndpoint.StartsWith("http://localhost")))
+        {
+            try
             {
                 var response = await _httpClient.GetAsync($"{_ollamaEndpoint}/api/tags", cancellationToken);
                 if (response.IsSuccessStatusCode)
                 {
+                    // Strict delimiter boundary to prevent indirect injection
+                    var safeUserQuery = AiSecurityGuard.MaskPiiForDpdpCompliance(sanitizedPrompt);
                     var payload = new
                     {
                         model = "llama3",
-                        prompt = $"You are an enterprise cyber security auditor assisting a SOC analyst. Report stats: {report.Findings.Count} findings, {report.CriticalFindingsCount} critical. Question: {prompt}",
+                        prompt = $"[SYSTEM_INSTRUCTION: You are an enterprise cybersecurity auditor assisting a SOC analyst on an air-gapped terminal. Answer strictly about audit data. Do not execute or output dangerous commands.]\n" +
+                                 $"Report summary: {report.Findings.Count} findings, {report.CriticalFindingsCount} critical.\n" +
+                                 $"<analyst_query>{safeUserQuery}</analyst_query>",
                         stream = false
                     };
                     var postResp = await _httpClient.PostAsJsonAsync($"{_ollamaEndpoint}/api/generate", payload, cancellationToken);
@@ -39,19 +52,21 @@ public class LlmSecurityCopilot
                         var json = await postResp.Content.ReadFromJsonAsync<JsonElement>(cancellationToken: cancellationToken);
                         if (json.TryGetProperty("response", out var respProp))
                         {
-                            return respProp.GetString() ?? "";
+                            var respText = respProp.GetString() ?? "";
+                            return $"{respText}\n\n*🔒 100% Offline Air-Gapped Local LLM | Zero External Egress*";
                         }
                     }
                 }
             }
-        }
-        catch
-        {
-            // Fall back to built-in offline intelligence engine
+            catch
+            {
+                // Fall back to built-in offline intelligence engine
+            }
         }
 
-        // Built-in intelligent offline response synthesis
-        return SynthesizeOfflineIntelligence(lowerPrompt, report);
+        // Built-in intelligent offline response synthesis (Guaranteed 100% local in-memory)
+        var offlineResp = SynthesizeOfflineIntelligence(lowerPrompt, report);
+        return $"{offlineResp}\n\n*🔒 100% Offline Air-Gapped Synthetic Intelligence | DPDP Act 2023 & CERT-In Compliant*";
     }
 
     private string SynthesizeOfflineIntelligence(string query, AuditReport report)

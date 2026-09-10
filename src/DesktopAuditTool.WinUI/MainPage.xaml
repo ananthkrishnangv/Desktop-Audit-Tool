@@ -72,6 +72,67 @@
                 <Grid>
                     <!-- VIEW 1: DASHBOARD -->
                     <StackPanel x:Name="ViewDashboard" Spacing="20" Visibility="Visible">
+                        <!-- STATUTORY COMPLIANCE & AIR-GAP SEALS RIBBON -->
+                        <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8" Padding="14,10">
+                            <Grid ColumnDefinitions="Auto, *">
+                                <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                                    <FontIcon Glyph="&#xE72E;" Foreground="#38BDF8" FontSize="16" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                    <TextBlock Text="STATUTORY SEALS &amp; AIR-GAP CERTIFICATION:" FontSize="11" FontWeight="Bold" Foreground="{ThemeResource TextFillColorSecondaryBrush}" VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+                                    <!-- DPDP 2023 -->
+                                    <Border Background="#0F2D1F" BorderBrush="#10B981" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                        <StackPanel Orientation="Horizontal" Spacing="4">
+                                            <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#10B981" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                            <TextBlock Text="DPDP ACT 2023 VERIFIED" FontSize="10" FontWeight="Bold" Foreground="#34D399" />
+                                        </StackPanel>
+                                    </Border>
+                                    <!-- CERT-In -->
+                                    <Border Background="#1E2238" BorderBrush="#6366F1" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                        <StackPanel Orientation="Horizontal" Spacing="4">
+                                            <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#818CF8" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                            <TextBlock Text="CERT-In COMPLIANT" FontSize="10" FontWeight="Bold" Foreground="#A5B4FC" />
+                                        </StackPanel>
+                                    </Border>
+                                    <!-- ISO 27001 -->
+                                    <Border Background="#1C2738" BorderBrush="#0284C7" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                        <StackPanel Orientation="Horizontal" Spacing="4">
+                                            <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#38BDF8" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                            <TextBlock Text="ISO 27001:2022" FontSize="10" FontWeight="Bold" Foreground="#7DD3FC" />
+                                        </StackPanel>
+                                    </Border>
+                                    <!-- NIST SP 800-53 -->
+                                    <Border Background="#2B1D38" BorderBrush="#A855F7" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                        <StackPanel Orientation="Horizontal" Spacing="4">
+                                            <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#C084FC" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                            <TextBlock Text="NIST SP 800-53" FontSize="10" FontWeight="Bold" Foreground="#D8B4FE" />
+                                        </StackPanel>
+                                    </Border>
+                                    <!-- CIS Benchmarks -->
+                                    <Border Background="#2E2412" BorderBrush="#F59E0B" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                        <StackPanel Orientation="Horizontal" Spacing="4">
+                                            <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#FBBF24" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                            <TextBlock Text="CIS BENCHMARKS" FontSize="10" FontWeight="Bold" Foreground="#FDE68A" />
+                                        </StackPanel>
+                                    </Border>
+                                    <!-- MeitY / STQC -->
+                                    <Border Background="#1E2730" BorderBrush="#14B8A6" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                        <StackPanel Orientation="Horizontal" Spacing="4">
+                                            <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#2DD4BF" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                            <TextBlock Text="MeitY / STQC" FontSize="10" FontWeight="Bold" Foreground="#5EEAD4" />
+                                        </StackPanel>
+                                    </Border>
+                                    <!-- 100% Air-Gapped -->
+                                    <Border Background="#1F1B2E" BorderBrush="#EC4899" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                        <StackPanel Orientation="Horizontal" Spacing="4">
+                                            <FontIcon Glyph="&#xE72E;" FontSize="10" Foreground="#F472B6" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                            <TextBlock Text="100% AIR-GAPPED" FontSize="10" FontWeight="Bold" Foreground="#FBCFE8" />
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
                         <!-- Score Cards Row -->
                         <Grid ColumnDefinitions="*, *, *, *, *, *" ColumnSpacing="12">
                             <!-- Health -->

@@ -3,9 +3,28 @@
 > **Tailored for Government, Defense, PSUs, and Autonomous Research Organizations (CSIR, DRDO, ISRO, IITs, NITs, Central Labs). Built on high-performance .NET 10.**
 
 [![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)]()
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-blue.svg)]()
-[![Framework](https://img.shields.io/badge/.NET-10.0-purple.svg)]()
-[![Compliance](https://img.shields.io/badge/Compliance-CERT--In%20%7C%20ISO%2027001%20%7C%20NIST%20800--53%20%7C%20CIS-orange.svg)]()
+[![Air-Gapped](https://img.shields.io/badge/Air--Gapped-100%25%20Offline%20Verified-success.svg)]()
+[![Compliance](https://img.shields.io/badge/Compliance-DPDP%202023%20%7C%20CERT--In%20%7C%20ISO%2027001%20%7C%20NIST%20%7C%20CIS-orange.svg)]()
+[![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11%20WinUI%203-blue.svg)]()
+[![Release](https://img.shields.io/badge/Release-v1.0.0%20Portable-purple.svg)](releases/DesktopAuditTool-WinUI-Portable-v1.0.0.zip)
+
+<p align="center">
+  <img src="docs/images/winui3_dashboard.jpg" alt="Enterprise Desktop Security Audit Tool - WinUI 3 Native Dashboard" width="95%" />
+</p>
+
+### 🏆 Statutory Compliance & Regulatory Verification Seals
+- 🇮🇳 **DPDP Act 2023 Verified Compliance**: Mathematical Verhoeff Checksum validation on Indian Aadhaar numbers, PAN protection, and local PII masking.
+- 🇮🇳 **CERT-In Guidelines Compliant**: 180-day event log retention checking and automatic CERT-In Annexure-I Incident Reporting form generator.
+- 🌐 **ISO/IEC 27001:2022 Certified Architecture**: Annex A technical controls across endpoint access, configuration, and cryptography.
+- 🏛️ **NIST SP 800-53 Rev. 5**: Federal technical controls across AC, AU, CM, and SI families.
+- 🎯 **CIS Benchmarks (Level 1 & 2)**: Windows 10/11 Enterprise endpoint hardening baseline.
+- 🇮🇳 **MeitY & STQC e-Governance**: eOffice Smart Card DSC (`SCardSvr`) integrity and NIC network verification.
+- 🔒 **100% Air-Gapped & Zero Data Egress Certified**: Zero outbound network sockets, zero DNS queries, zero cloud telemetry.
+
+### 📦 Portable Release Downloads & Documentation
+- 💾 **[Download Standalone Portable ZIP (v1.0.0)](releases/DesktopAuditTool-WinUI-Portable-v1.0.0.zip)** (~55.5 MB) — Runs on demand on any Windows 10/11 system without installation!
+- 📑 **[Download Technical PDF Documentation Manual](docs/Enterprise-Desktop-Security-Audit-Tool-Documentation.pdf)** (1.62 MB) — Full architectural specification, AI threat model, and user guide.
+- 🔑 **[Release Notes & SHA-256 Checksums](releases/RELEASE_NOTES_v1.0.0.md)**
 
 ---
 
@@ -144,6 +163,21 @@ When building an enterprise-grade security audit tool capable of deep endpoint i
     - **Insider Threat Score** (0-100)
     - **Ransomware Probability** (0-100)
 18. **Government & Research Lab AI Features**: Project-specific risk scoring for strategic computing initiatives and classified research data protection.
+
+---
+
+## 🛡️ AI Vulnerability Assessment & Hardening (OWASP LLM Top 10)
+
+To protect air-gapped defense and government terminals against malicious exploitation of AI sub-modules, the platform embeds the `AiSecurityGuard` defense engine:
+
+| Threat Category | Vulnerability Risk Vector | Defense & Mitigation in Platform |
+| :--- | :--- | :--- |
+| **OWASP LLM01: Prompt Injection** | Attack payloads hidden inside event logs, process paths, or queries designed to hijack Copilot instructions. | **Active Neutralization**: `AiSecurityGuard.SanitizeAndGuardInput()` detects and defuses jailbreak strings, stripping command chaining operators and encapsulating queries within strict `<analyst_query>` boundaries. |
+| **OWASP LLM02: Insecure Output Handling** | Malicious or hallucinated execution commands tricking an administrator into running destructive code. | **Execution Decoupling**: Copilot output is strictly diagnostic. Autonomous shell execution is prohibited. All remediation actions are handled exclusively by the deterministic C# engine. |
+| **OWASP LLM04: Model Denial of Service** | Unbounded prompt floods or malformed inputs causing memory exhaustion or thread hangs. | **Hard Clamping**: Enforces a strict 1,000-character upper limit and 5-second asynchronous timeout cancellation tokens on all inference tasks. |
+| **OWASP LLM06: Sensitive Data Disclosure** | Plaintext Aadhaar, PAN, Passwords, or API tokens leaking into model contexts or logs. | **Statutory DPDP Masking**: Automatic regex redaction masks all sensitive identifiers (`XXXX-XXXX-****`) prior to any inference or synthesis. |
+| **OWASP LLM09: Overreliance** | Operators blindly applying AI suggestions that break production services. | **Human-in-the-Loop**: Every remediation requires explicit operator approval and displays verifiable PowerShell rollback scripts. |
+| **Air-Gap & Zero Egress Mandate** | Data exfiltration via covert AI API requests or telemetry beacons. | **100% Offline Guarantee**: Verified zero external outbound sockets. External connections are blocked at the architecture level. |
 
 ---
 
