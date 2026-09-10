@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/DesktopAuditTool.App/DesktopAuditTool.App.csproj" />
+    <Project Path="src/DesktopAuditTool.Auditors/DesktopAuditTool.Auditors.csproj" />
+    <Project Path="src/DesktopAuditTool.Core/DesktopAuditTool.Core.csproj" />
+    <Project Path="src/DesktopAuditTool.Remediation/DesktopAuditTool.Remediation.csproj" />
+    <Project Path="src/DesktopAuditTool.Reporting/DesktopAuditTool.Reporting.csproj" />
+    <Project Path="src/DesktopAuditTool.ThreatIntel/DesktopAuditTool.ThreatIntel.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DesktopAuditTool.Tests/DesktopAuditTool.Tests.csproj" />
+  </Folder>
+</Solution>
