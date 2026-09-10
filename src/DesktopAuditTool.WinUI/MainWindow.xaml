@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:DesktopAuditTool_WinUI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="DesktopAuditTool.WinUI"
+    Title="Enterprise Desktop Security Audit Tool"
     mc:Ignorable="d">
     <Window.SystemBackdrop>
         <MicaBackdrop />
@@ -18,9 +18,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TitleBar x:Name="AppTitleBar" Title="DesktopAuditTool.WinUI">
+        <TitleBar x:Name="AppTitleBar" Title="Enterprise Desktop Security Audit Tool">
             <TitleBar.IconSource>
-                <ImageIconSource ImageSource="Assets/AppIcon.ico" />
+                <ImageIconSource ImageSource="Assets/Square44x44Logo.targetsize-48_altform-lightunplated.png" />
             </TitleBar.IconSource>
         </TitleBar>
 
