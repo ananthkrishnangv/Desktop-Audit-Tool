@@ -63,6 +63,6 @@ This release introduces the `AiSecurityGuard` engine providing defense-in-depth 
 ## 🔑 Cryptographic Checksums (SHA-256)
 
 ```
-35AE463B3ACB34265438CE9A81143DABCB8D49EF33E097BC4BE2EA0A929205B1  DesktopAuditTool-WinUI-Portable-v1.0.0.zip
+0F5A46408F03E14549A700A20C4F9F351594A09155A05FEEEE120841453AC666  DesktopAuditTool-WinUI-Portable-v1.0.0.zip
 DA03E1D4F92CC787485FF66E659D6E9ECC39E6237CF8E250E607607DA94B277E  Enterprise-Desktop-Security-Audit-Tool-Documentation.pdf
 ```
