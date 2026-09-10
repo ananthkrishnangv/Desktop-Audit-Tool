@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DesktopAuditTool.WinUI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "DesktopAuditTool.WinUI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

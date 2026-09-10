@@ -150,37 +150,67 @@ When building an enterprise-grade security audit tool capable of deep endpoint i
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Windows 10/11 Enterprise / Server (or Linux/macOS)
+- Windows 10/11 Enterprise / Pro / Server (x64)
 - [.NET 10 SDK](https://dotnet.microsoft.com/download)
 
-### 1. Build the Solution
+---
+
+### 🖥️ Option A: Native WinUI 3 Desktop App (On-Demand & Portable)
+
+The platform includes a **100% native Windows WinUI 3 desktop application** built with the **Windows App SDK 2.4.0**, featuring Microsoft Fluent Design, dynamic Mica backdrop, and responsive asynchronous audit telemetry.
+
+#### 1. Instant Launch (Pre-built Portable Binary)
+Double-click `Run-WinUI-Audit-Tool.bat` in the repository root, or run directly from PowerShell:
 ```powershell
-dotnet build -c Release
+.\Run-WinUI-Audit-Tool.bat
+# or execute directly:
+.\dist\DesktopAuditTool-WinUI-Portable\DesktopAuditTool.WinUI.exe
 ```
 
-### 2. Run Test Suite
+#### 2. Run / Debug via .NET CLI
 ```powershell
-dotnet test
+dotnet run --project src/DesktopAuditTool.WinUI -c Release
 ```
 
-### 3. Launch Interactive Standalone Desktop GUI
-Simply run the executable without arguments (or with `--gui`):
-```powershell
-dotnet run --project src/DesktopAuditTool.App
-```
-The embedded Desktop Server activates at `http://127.0.0.1:58200/` and automatically opens the Desktop SOC Dashboard window in your browser.
+#### 3. WinUI 3 Navigation & Interactive Workspaces
+- **📊 SOC Dashboard**: Real-time KPI scorecards (Health Score, Threat Score, Compliance %, AI Risk Forecast, Active CVEs, DLP Alerts), dynamic progress gauge, one-click "Start Complete System Audit".
+- **🔍 Findings Explorer**: Interactive filterable datagrid across all severities (Critical, High, Medium, Low) with MITRE ATT&CK technique IDs, CVSS scores, and remediation scripts.
+- **📦 22 Modules Browser**: Deep-dive into each individual audit category (Asset Discovery, Hardening, CVEs, EDR/AV, Firewall, Network, AD, App Sec, USBSTOR, Event Logs, Malware, FIM, DLP, etc.).
+- **📜 Compliance Matrix**: Visual compliance scorecards for CERT-In, ISO 27001, NIST SP 800-53, CIS Benchmarks, MeitY, and STQC guidelines.
+- **🛡️ DLP & Sensitive Data**: Deep discovery results for Aadhaar (Verhoeff checksum validated), PAN numbers, Passports, Bank IFSC/Accounts, SSH Private Keys, and unencrypted credentials.
+- **🤖 AI Threat Intel**: Real-time behavioral engine detecting LOLBins (`certutil`, `wmic`, `powershell`), UBA after-hours access, Ransomware early warning, and correlated multi-stage attack chains.
+- **⚡ Automated Remediation**: One-click safe hardening fixes (Enforce Firewall, Disable SMBv1, Fix UAC, Enable LSA PPL, Disable AutoRun) with rollback verification.
+- **💬 Security Copilot**: Built-in interactive AI assistant offering offline security analysis, remediation commands, and threat hunting queries.
+- **📑 Multi-Format Exporter**: Export audit dossiers to HTML, Executive PDF, Excel (.xls), CSV, JSON, and CERT-In Annexure-I forms with a single click.
 
-### 4. Run Headless Command-Line Audit (for Servers & Automation)
+---
+
+### 💻 Option B: Run Headless Command-Line Audit (for Servers & Automation)
 ```powershell
 dotnet run --project src/DesktopAuditTool.App -- --cli --export ./reports
 ```
 
 Command-Line Arguments:
-- `--cli`, `--audit`, `--all`: Execute full 22-module audit and print executive scorecard.
-- `--export <dir>`: Directory to export PDF, Excel, HTML, CSV, JSON, and CERT-In form.
+- `--cli`, `--audit`, `--all`: Execute full 22-module audit and print executive scorecard to console.
+- `--export <dir>`: Directory to export PDF, Excel, HTML, CSV, JSON, and CERT-In forms.
 - `--dept <name>`: Department name (e.g., `'Advanced Aerospace Simulation'`).
 - `--project <name>`: Project name (e.g., `'Strategic HPC Computing'`).
 - `--classification <tier>`: `Unclassified`, `Restricted`, `Confidential`, `Secret`, `TopSecret`.
+
+---
+
+### 🌐 Option C: Embedded Desktop Web Server Mode
+```powershell
+dotnet run --project src/DesktopAuditTool.App
+```
+Activates an embedded desktop web listener at `http://127.0.0.1:58200/` and opens the web-based SOC dashboard.
+
+---
+
+### 🧪 Option D: Automated Test Suite
+```powershell
+dotnet test
+```
 
 ---
 
