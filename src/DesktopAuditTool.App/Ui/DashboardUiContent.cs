@@ -658,6 +658,12 @@ public static class DashboardUiContent
       .then(data => { if (data && data.targetHostname) renderReport(data); })
       .catch(() => {});
   </script>
+
+  <footer style="margin-top: 48px; margin-bottom: 24px; text-align: center; opacity: 0.65; font-size: 11px; color: #94a3b8;">
+    <div style="display: inline-block; padding: 6px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 9999px; font-weight: 500; letter-spacing: 0.3px;">
+      Made by ICTD CSIR-SERC for CSIR with ❤️
+    </div>
+  </footer>
 </body>
 </html>
 """;

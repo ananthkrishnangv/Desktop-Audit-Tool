@@ -64,11 +64,22 @@ static class Program
 
             var winUiExe = Path.Combine(appDir, "DesktopAuditTool.WinUI.exe");
             var cliExe = Path.Combine(appDir, "CLI", "DesktopAuditTool.App.exe");
+            var stampFile = Path.Combine(appDir, ".extracted_stamp");
 
-            // Extract if not present or forced
-            if (forceReinstall || !File.Exists(winUiExe))
+            var assembly = Assembly.GetExecutingAssembly();
+            long payloadLength = 0;
+            using (var stream = assembly.GetManifestResourceStream("Payload.zip"))
             {
-                ExtractPayload(appDir, force: forceReinstall);
+                if (stream != null) payloadLength = stream.Length;
+            }
+
+            bool stampMatches = File.Exists(stampFile) && File.Exists(winUiExe) && (File.ReadAllText(stampFile) == payloadLength.ToString());
+
+            // Extract if not present, forced, or payload updated
+            if (forceReinstall || !stampMatches)
+            {
+                ExtractPayload(appDir, force: true);
+                try { File.WriteAllText(stampFile, payloadLength.ToString()); } catch { }
             }
 
             string exeToLaunch = isCliMode && File.Exists(cliExe) ? cliExe : winUiExe;

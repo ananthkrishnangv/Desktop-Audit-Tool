@@ -1,6 +1,6 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Package Name="Enterprise Desktop Security Audit Tool"
-           Manufacturer="Cybersecurity Defense and Research Division"
+           Manufacturer="ICTD CSIR-SERC"
            Version="1.0.0"
            UpgradeCode="4C3781A4-7D68-45F9-823E-963B57917C7F"
            Scope="perMachine">

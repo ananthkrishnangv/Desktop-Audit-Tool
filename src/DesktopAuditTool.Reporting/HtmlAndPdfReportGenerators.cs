@@ -201,6 +201,11 @@ public class HtmlReportGenerator : IReportGenerator
         sb.AppendLine($"      <p style=\"margin-top:0.75rem;\"><strong>Cryptographic Evidence Chain of Custody (SHA256):</strong></p>");
         sb.AppendLine($"      <div class=\"hash-badge\">{report.GovProfile.DigitalEvidenceHashChain}</div>");
         sb.AppendLine("    </div>");
+        sb.AppendLine("    <div style=\"margin-top:2.5rem; margin-bottom:1.5rem; text-align:center; opacity:0.7;\">");
+        sb.AppendLine("      <span style=\"display:inline-block; padding:0.4rem 1.2rem; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:9999px; font-size:0.75rem; color:#94a3b8; font-weight:500;\">");
+        sb.AppendLine("        Made by ICTD CSIR-SERC for CSIR with ❤️");
+        sb.AppendLine("      </span>");
+        sb.AppendLine("    </div>");
 
         sb.AppendLine("  </div>");
         sb.AppendLine("</body>");

@@ -280,4 +280,9 @@ public sealed partial class MainPage : Page
         StatusInfoBar.Title = "Reports Exported";
         StatusInfoBar.Message = $"Successfully exported all official reports to: {dir}";
     }
+
+    private void BtnToggleFullScreen_Click(object sender, RoutedEventArgs e)
+    {
+        App.MainWindowInstance?.ToggleFullScreen();
+    }
 }
