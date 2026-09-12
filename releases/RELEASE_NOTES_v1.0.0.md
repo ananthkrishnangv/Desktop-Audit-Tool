@@ -9,9 +9,9 @@
 
 | Asset | Size | Description |
 | :--- | :--- | :--- |
-| ⚡ **[DesktopAuditTool-Portable.exe](./DesktopAuditTool-Portable.exe)** | 75.2 MB | **Single Portable Executable (Self-Extract & Run)**. Zero installation, zero external dependencies. Double-click to extract automatically and launch the native WinUI 3 dashboard in full screen. |
-| 💻 **[DesktopAuditTool-Setup-v1.0.0.msi](./DesktopAuditTool-Setup-v1.0.0.msi)** | 48.8 MB | **Enterprise Windows Installer (MSI Package)**. Authored with WiX Toolset v5. Automated setup with Desktop and Start Menu shortcuts, embedded application logo, and seamless uninstallation. |
-| 📦 **[DesktopAuditTool-WinUI-Portable-v1.0.0.zip](./DesktopAuditTool-WinUI-Portable-v1.0.0.zip)** | 63.6 MB | **Complete Standalone Portable Suite** (Native WinUI 3 + CLI Scanner). Unpack anywhere and run without administrative setup. |
+| ⚡ **[DesktopAuditTool-Portable.exe](./DesktopAuditTool-Portable.exe)** | 87.6 MB | **Single Portable Executable (Self-Extract & Run)**. 100% self-contained, zero external dependencies, bundles .NET 10 Desktop runtime. Double-click to extract automatically and launch the native WinUI 3 dashboard in full screen. |
+| 💻 **[DesktopAuditTool-Setup-v1.0.0.msi](./DesktopAuditTool-Setup-v1.0.0.msi)** | 61.4 MB | **Enterprise Windows Installer (MSI Package)**. Authored with WiX Toolset v5. Self-contained setup with Desktop and Start Menu shortcuts, embedded application logo, and seamless uninstallation. |
+| 📦 **[DesktopAuditTool-WinUI-Portable-v1.0.0.zip](./DesktopAuditTool-WinUI-Portable-v1.0.0.zip)** | 76.5 MB | **Complete Standalone Portable Suite** (Self-Contained Native WinUI 3 + CLI Scanner). Unpack anywhere and run without .NET runtime or administrative setup. |
 | 📑 **[Enterprise-Desktop-Security-Audit-Tool-Documentation.pdf](./Enterprise-Desktop-Security-Audit-Tool-Documentation.pdf)** | 4.42 MB | **Publication-Grade Technical Documentation & Manual** with full UI screenshots, AI threat modeling, and regulatory compliance mapping. |
 | 🔑 **[SHA256SUMS.txt](./SHA256SUMS.txt)** | < 1 KB | Official cryptographic hash manifest for air-gapped terminal integrity verification. |
 
@@ -95,8 +95,8 @@ The `AiSecurityGuard` engine enforces defense-in-depth against AI threat vectors
 ## 🔑 Cryptographic Checksums (SHA-256)
 
 ```
-DC15A80A6A63AC29443FA197E583FBFAACC6C58A11AE6EA3D552654D151AE289  DesktopAuditTool-Portable.exe
-3A33583923972505B3DE2D23EF352E336EDC3F5B281C0A9B018EDEF9577E4AD6  DesktopAuditTool-Setup-v1.0.0.msi
-2410C6A82077DED8E1283476B6683CEDDD005BAC06F0A046F30AE0EEDC64C294  DesktopAuditTool-WinUI-Portable-v1.0.0.zip
+32BA3E565C1BD5AD965B072752DA9F649FCE49C23015CFC26080B33EA7D0B9E0  DesktopAuditTool-Portable.exe
+0749D0E80732494B22FC5861616FF3BBA6755F09FA1C429AB8F2370088F77D28  DesktopAuditTool-Setup-v1.0.0.msi
+5FB8E85AF35CAF1B404DE66E511EA380AB714EDCFAECFDA294DC5475ADB85485  DesktopAuditTool-WinUI-Portable-v1.0.0.zip
 776B855CEC97983BDC1D9946AE54ECF524677886839455B7F67472214C82A37E  Enterprise-Desktop-Security-Audit-Tool-Documentation.pdf
 ```

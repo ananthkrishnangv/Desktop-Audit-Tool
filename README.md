@@ -24,9 +24,9 @@
 - 🔒 **100% Air-Gapped & Zero Data Egress Certified**: Zero outbound network sockets, zero DNS queries, zero cloud telemetry.
 
 ### 📦 Release Downloads & Packages
-- ⚡ **[Download Single Portable Executable (`DesktopAuditTool-Portable.exe`)](releases/DesktopAuditTool-Portable.exe)** (75.2 MB) — **Zero installation, self-extract & run!** Extract and runnable on demand on any Windows 10/11 system.
-- 💻 **[Download Windows Installer Package (`DesktopAuditTool-Setup-v1.0.0.msi`)](releases/DesktopAuditTool-Setup-v1.0.0.msi)** (48.8 MB) — Full MSI installer with Start Menu & Desktop shortcuts featuring the official emblem logo.
-- 💾 **[Download Standalone Portable ZIP (`DesktopAuditTool-WinUI-Portable-v1.0.0.zip`)](releases/DesktopAuditTool-WinUI-Portable-v1.0.0.zip)** (63.6 MB) — Traditional zip distribution with WinUI 3 GUI & CLI batch launchers.
+- ⚡ **[Download Single Portable Executable (`DesktopAuditTool-Portable.exe`)](releases/DesktopAuditTool-Portable.exe)** (87.6 MB) — **100% Self-Contained, zero dependencies, self-extract & run!** Extract and runnable on demand on any Windows 10/11 system without requiring .NET runtime installation.
+- 💻 **[Download Windows Installer Package (`DesktopAuditTool-Setup-v1.0.0.msi`)](releases/DesktopAuditTool-Setup-v1.0.0.msi)** (61.4 MB) — Full MSI installer with Start Menu & Desktop shortcuts featuring the official emblem logo and bundled runtime.
+- 💾 **[Download Standalone Portable ZIP (`DesktopAuditTool-WinUI-Portable-v1.0.0.zip`)](releases/DesktopAuditTool-WinUI-Portable-v1.0.0.zip)** (76.5 MB) — Traditional self-contained zip distribution with WinUI 3 GUI & CLI batch launchers.
 - 📑 **[Download Technical PDF Documentation Manual](releases/Enterprise-Desktop-Security-Audit-Tool-Documentation.pdf)** (4.42 MB) — Comprehensive technical architecture, US Defense/Financial compliance mappings, AI threat model, and regulatory manual.
 - 🔑 **[Release Notes & SHA-256 Checksums](releases/RELEASE_NOTES_v1.0.0.md)** | **[Raw SHA256SUMS.txt](releases/SHA256SUMS.txt)**
 
