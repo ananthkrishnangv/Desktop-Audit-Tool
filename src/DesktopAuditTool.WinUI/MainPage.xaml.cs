@@ -116,7 +116,7 @@ public sealed partial class MainPage : Page
         ListModules.ItemsSource = report.ModuleExecutionTimesMs.ToList();
 
         // 6. Compliance scorecards
-        ListCompliance.ItemsSource = report.ComplianceScorecards;
+        ApplyComplianceFilter();
 
         // 7. DLP list
         ListDlp.ItemsSource = report.DlpFindings;
@@ -182,6 +182,28 @@ public sealed partial class MainPage : Page
         {
             ListAllFindings.ItemsSource = filtered;
         }
+    }
+
+    private void CmbComplianceProfile_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        ApplyComplianceFilter();
+    }
+
+    private void ApplyComplianceFilter()
+    {
+        if (_currentReport == null || ListCompliance == null) return;
+
+        var selectedIndex = CmbComplianceProfile?.SelectedIndex ?? 0;
+        var scorecards = _currentReport.ComplianceScorecards;
+
+        ListCompliance.ItemsSource = selectedIndex switch
+        {
+            1 => scorecards.Where(s => s.Profile == ComplianceProfile.IndianSovereign).ToList(),
+            2 => scorecards.Where(s => s.Profile == ComplianceProfile.UsDefense).ToList(),
+            3 => scorecards.Where(s => s.Profile == ComplianceProfile.UsFinancial).ToList(),
+            4 => scorecards.Where(s => s.Profile == ComplianceProfile.GlobalEnterprise).ToList(),
+            _ => scorecards
+        };
     }
 
     private async void BtnFixSingle_Click(object sender, RoutedEventArgs e)

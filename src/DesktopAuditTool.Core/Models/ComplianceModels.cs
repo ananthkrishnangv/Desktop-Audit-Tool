@@ -17,6 +17,7 @@ public class ComplianceScorecard
 {
     public ComplianceStandard Standard { get; set; }
     public string StandardTitle { get; set; } = string.Empty;
+    public ComplianceProfile Profile { get; set; } = ComplianceProfile.GlobalEnterprise;
     public int TotalControls { get; set; }
     public int PassedControls { get; set; }
     public int FailedControls { get; set; }

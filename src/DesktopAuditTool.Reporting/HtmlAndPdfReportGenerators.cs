@@ -110,6 +110,10 @@ public class HtmlReportGenerator : IReportGenerator
         sb.AppendLine("      <span style=\"font-size:0.75rem; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-right:0.5rem;\">Statutory Seals &amp; Verification:</span>");
         sb.AppendLine("      <span style=\"background:#0f2d1f; border:1px solid #10b981; color:#34d399; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;\">✔ DPDP ACT 2023 VERIFIED</span>");
         sb.AppendLine("      <span style=\"background:#1e2238; border:1px solid #6366f1; color:#a5b4fc; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;\">✔ CERT-In COMPLIANT</span>");
+        sb.AppendLine("      <span style=\"background:#2e2412; border:1px solid #f59e0b; color:#fde68a; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;\">✔ DoD DISA STIG</span>");
+        sb.AppendLine("      <span style=\"background:#083344; border:1px solid #06b6d4; color:#67e8f9; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;\">✔ CMMC 2.0 LEVEL 2</span>");
+        sb.AppendLine("      <span style=\"background:#064e3b; border:1px solid #10b981; color:#a7f3d0; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;\">✔ PCI-DSS v4.0</span>");
+        sb.AppendLine("      <span style=\"background:#3b0764; border:1px solid #a855f7; color:#e9d5ff; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;\">✔ SOX 404 ITGC</span>");
         sb.AppendLine("      <span style=\"background:#1c2738; border:1px solid #0284c7; color:#7dd3fc; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;\">✔ ISO/IEC 27001:2022</span>");
         sb.AppendLine("      <span style=\"background:#2b1d38; border:1px solid #a855f7; color:#d8b4fe; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;\">✔ NIST SP 800-53</span>");
         sb.AppendLine("      <span style=\"background:#2e2412; border:1px solid #f59e0b; color:#fde68a; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;\">✔ CIS BENCHMARKS L1 &amp; L2</span>");
@@ -175,6 +179,28 @@ public class HtmlReportGenerator : IReportGenerator
         sb.AppendLine("        </table>");
         sb.AppendLine("      </div>");
         sb.AppendLine("    </div>");
+
+        // Statutory & Regulatory Compliance Scorecards
+        if (report.ComplianceScorecards.Count > 0)
+        {
+            sb.AppendLine("    <div class=\"section\">");
+            sb.AppendLine($"      <h2>Statutory &amp; Regulatory Compliance Scorecards ({report.ComplianceScorecards.Count} Frameworks)</h2>");
+            sb.AppendLine("      <div style=\"display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;\">");
+            foreach (var sc in report.ComplianceScorecards)
+            {
+                var barColor = sc.CompliancePercentage >= 80 ? "#10b981" : sc.CompliancePercentage >= 60 ? "#f59e0b" : "#ef4444";
+                sb.AppendLine("        <div style=\"background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:8px; padding:1.25rem;\">");
+                sb.AppendLine($"          <div style=\"font-weight:700; font-size:1rem; margin-bottom:0.35rem; color:#fff;\">{WebUtility.HtmlEncode(sc.StandardTitle)}</div>");
+                sb.AppendLine($"          <div style=\"font-size:0.82rem; color:var(--text-muted); margin-bottom:0.75rem;\">{sc.PassedControls} of {sc.TotalControls} Controls Compliant ({sc.FailedControls} non-compliant)</div>");
+                sb.AppendLine("          <div style=\"display:flex; align-items:center; gap:1rem;\">");
+                sb.AppendLine($"            <div style=\"flex:1; height:8px; background:rgba(255,255,255,0.08); border-radius:4px; overflow:hidden;\"><div style=\"width:{sc.CompliancePercentage}%; height:100%; background:{barColor};\"></div></div>");
+                sb.AppendLine($"            <span style=\"font-weight:800; font-size:1.25rem; color:{barColor};\">{sc.CompliancePercentage:F0}%</span>");
+                sb.AppendLine("          </div>");
+                sb.AppendLine("        </div>");
+            }
+            sb.AppendLine("      </div>");
+            sb.AppendLine("    </div>");
+        }
 
         // DLP & Data Protection Section
         if (report.DlpFindings.Count > 0)

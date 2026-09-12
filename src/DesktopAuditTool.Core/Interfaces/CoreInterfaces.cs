@@ -11,6 +11,7 @@ public class AuditContext
     public string Department { get; set; } = "Cyber & High Performance Systems";
     public bool DeepDlpScan { get; set; } = true;
     public bool QuickScanOnly { get; set; } = false;
+    public ComplianceProfile SelectedComplianceProfile { get; set; } = ComplianceProfile.All;
     public AssetInventory SharedInventory { get; set; } = new();
 }
 

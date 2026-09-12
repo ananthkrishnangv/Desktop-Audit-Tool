@@ -77,62 +77,92 @@
                     <StackPanel x:Name="ViewDashboard" Spacing="20" Visibility="Visible">
                         <!-- STATUTORY COMPLIANCE & AIR-GAP SEALS RIBBON -->
                         <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8" Padding="14,10">
-                            <Grid ColumnDefinitions="Auto, *">
+                            <Grid RowDefinitions="Auto, Auto" RowSpacing="8">
                                 <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
                                     <FontIcon Glyph="&#xE72E;" Foreground="#38BDF8" FontSize="16" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
-                                    <TextBlock Text="STATUTORY SEALS &amp; AIR-GAP CERTIFICATION:" FontSize="11" FontWeight="Bold" Foreground="{ThemeResource TextFillColorSecondaryBrush}" VerticalAlignment="Center" />
+                                    <TextBlock Text="STATUTORY SEALS &amp; AIR-GAP COMPLIANCE ASSURANCE:" FontSize="11" FontWeight="Bold" Foreground="{ThemeResource TextFillColorSecondaryBrush}" VerticalAlignment="Center" />
                                 </StackPanel>
-                                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
-                                    <!-- DPDP 2023 -->
-                                    <Border Background="#0F2D1F" BorderBrush="#10B981" BorderThickness="1" CornerRadius="12" Padding="8,3">
-                                        <StackPanel Orientation="Horizontal" Spacing="4">
-                                            <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#10B981" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
-                                            <TextBlock Text="DPDP ACT 2023 VERIFIED" FontSize="10" FontWeight="Bold" Foreground="#34D399" />
-                                        </StackPanel>
-                                    </Border>
-                                    <!-- CERT-In -->
-                                    <Border Background="#1E2238" BorderBrush="#6366F1" BorderThickness="1" CornerRadius="12" Padding="8,3">
-                                        <StackPanel Orientation="Horizontal" Spacing="4">
-                                            <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#818CF8" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
-                                            <TextBlock Text="CERT-In COMPLIANT" FontSize="10" FontWeight="Bold" Foreground="#A5B4FC" />
-                                        </StackPanel>
-                                    </Border>
-                                    <!-- ISO 27001 -->
-                                    <Border Background="#1C2738" BorderBrush="#0284C7" BorderThickness="1" CornerRadius="12" Padding="8,3">
-                                        <StackPanel Orientation="Horizontal" Spacing="4">
-                                            <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#38BDF8" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
-                                            <TextBlock Text="ISO 27001:2022" FontSize="10" FontWeight="Bold" Foreground="#7DD3FC" />
-                                        </StackPanel>
-                                    </Border>
-                                    <!-- NIST SP 800-53 -->
-                                    <Border Background="#2B1D38" BorderBrush="#A855F7" BorderThickness="1" CornerRadius="12" Padding="8,3">
-                                        <StackPanel Orientation="Horizontal" Spacing="4">
-                                            <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#C084FC" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
-                                            <TextBlock Text="NIST SP 800-53" FontSize="10" FontWeight="Bold" Foreground="#D8B4FE" />
-                                        </StackPanel>
-                                    </Border>
-                                    <!-- CIS Benchmarks -->
-                                    <Border Background="#2E2412" BorderBrush="#F59E0B" BorderThickness="1" CornerRadius="12" Padding="8,3">
-                                        <StackPanel Orientation="Horizontal" Spacing="4">
-                                            <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#FBBF24" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
-                                            <TextBlock Text="CIS BENCHMARKS" FontSize="10" FontWeight="Bold" Foreground="#FDE68A" />
-                                        </StackPanel>
-                                    </Border>
-                                    <!-- MeitY / STQC -->
-                                    <Border Background="#1E2730" BorderBrush="#14B8A6" BorderThickness="1" CornerRadius="12" Padding="8,3">
-                                        <StackPanel Orientation="Horizontal" Spacing="4">
-                                            <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#2DD4BF" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
-                                            <TextBlock Text="MeitY / STQC" FontSize="10" FontWeight="Bold" Foreground="#5EEAD4" />
-                                        </StackPanel>
-                                    </Border>
-                                    <!-- 100% Air-Gapped -->
-                                    <Border Background="#1F1B2E" BorderBrush="#EC4899" BorderThickness="1" CornerRadius="12" Padding="8,3">
-                                        <StackPanel Orientation="Horizontal" Spacing="4">
-                                            <FontIcon Glyph="&#xE72E;" FontSize="10" Foreground="#F472B6" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
-                                            <TextBlock Text="100% AIR-GAPPED" FontSize="10" FontWeight="Bold" Foreground="#FBCFE8" />
-                                        </StackPanel>
-                                    </Border>
-                                </StackPanel>
+                                <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" HorizontalScrollMode="Enabled" VerticalScrollMode="Disabled">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <!-- DPDP 2023 -->
+                                        <Border Background="#0F2D1F" BorderBrush="#10B981" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                            <StackPanel Orientation="Horizontal" Spacing="4">
+                                                <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#10B981" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                                <TextBlock Text="DPDP ACT 2023" FontSize="10" FontWeight="Bold" Foreground="#34D399" />
+                                            </StackPanel>
+                                        </Border>
+                                        <!-- CERT-In -->
+                                        <Border Background="#1E2238" BorderBrush="#6366F1" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                            <StackPanel Orientation="Horizontal" Spacing="4">
+                                                <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#818CF8" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                                <TextBlock Text="CERT-In COMPLIANT" FontSize="10" FontWeight="Bold" Foreground="#A5B4FC" />
+                                            </StackPanel>
+                                        </Border>
+                                        <!-- DoD DISA STIG -->
+                                        <Border Background="#2E2412" BorderBrush="#F59E0B" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                            <StackPanel Orientation="Horizontal" Spacing="4">
+                                                <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#FBBF24" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                                <TextBlock Text="DoD DISA STIG" FontSize="10" FontWeight="Bold" Foreground="#FDE68A" />
+                                            </StackPanel>
+                                        </Border>
+                                        <!-- CMMC 2.0 -->
+                                        <Border Background="#083344" BorderBrush="#06B6D4" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                            <StackPanel Orientation="Horizontal" Spacing="4">
+                                                <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#22D3EE" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                                <TextBlock Text="CMMC 2.0 LEVEL 2" FontSize="10" FontWeight="Bold" Foreground="#67E8F9" />
+                                            </StackPanel>
+                                        </Border>
+                                        <!-- PCI-DSS v4.0 -->
+                                        <Border Background="#064E3B" BorderBrush="#10B981" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                            <StackPanel Orientation="Horizontal" Spacing="4">
+                                                <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#34D399" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                                <TextBlock Text="PCI-DSS v4.0" FontSize="10" FontWeight="Bold" Foreground="#A7F3D0" />
+                                            </StackPanel>
+                                        </Border>
+                                        <!-- SOX 404 ITGC -->
+                                        <Border Background="#3B0764" BorderBrush="#A855F7" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                            <StackPanel Orientation="Horizontal" Spacing="4">
+                                                <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#C084FC" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                                <TextBlock Text="SOX 404 ITGC" FontSize="10" FontWeight="Bold" Foreground="#E9D5FF" />
+                                            </StackPanel>
+                                        </Border>
+                                        <!-- ISO 27001 -->
+                                        <Border Background="#1C2738" BorderBrush="#0284C7" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                            <StackPanel Orientation="Horizontal" Spacing="4">
+                                                <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#38BDF8" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                                <TextBlock Text="ISO 27001:2022" FontSize="10" FontWeight="Bold" Foreground="#7DD3FC" />
+                                            </StackPanel>
+                                        </Border>
+                                        <!-- NIST SP 800-53 -->
+                                        <Border Background="#2B1D38" BorderBrush="#A855F7" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                            <StackPanel Orientation="Horizontal" Spacing="4">
+                                                <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#C084FC" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                                <TextBlock Text="NIST SP 800-53" FontSize="10" FontWeight="Bold" Foreground="#D8B4FE" />
+                                            </StackPanel>
+                                        </Border>
+                                        <!-- CIS Benchmarks -->
+                                        <Border Background="#2E2412" BorderBrush="#F59E0B" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                            <StackPanel Orientation="Horizontal" Spacing="4">
+                                                <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#FBBF24" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                                <TextBlock Text="CIS BENCHMARKS" FontSize="10" FontWeight="Bold" Foreground="#FDE68A" />
+                                            </StackPanel>
+                                        </Border>
+                                        <!-- MeitY / STQC -->
+                                        <Border Background="#1E2730" BorderBrush="#14B8A6" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                            <StackPanel Orientation="Horizontal" Spacing="4">
+                                                <FontIcon Glyph="&#xE73E;" FontSize="10" Foreground="#2DD4BF" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                                <TextBlock Text="MeitY / STQC" FontSize="10" FontWeight="Bold" Foreground="#5EEAD4" />
+                                            </StackPanel>
+                                        </Border>
+                                        <!-- 100% Air-Gapped -->
+                                        <Border Background="#1F1B2E" BorderBrush="#EC4899" BorderThickness="1" CornerRadius="12" Padding="8,3">
+                                            <StackPanel Orientation="Horizontal" Spacing="4">
+                                                <FontIcon Glyph="&#xE72E;" FontSize="10" Foreground="#F472B6" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                                                <TextBlock Text="100% AIR-GAPPED" FontSize="10" FontWeight="Bold" Foreground="#FBCFE8" />
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+                                </ScrollViewer>
                             </Grid>
                         </Border>
 
@@ -296,7 +326,22 @@
 
                     <!-- VIEW 4: COMPLIANCE -->
                     <StackPanel x:Name="ViewCompliance" Spacing="16" Visibility="Collapsed">
-                        <TextBlock Text="National &amp; International Compliance Scorecards" FontSize="18" FontWeight="Bold" />
+                        <Grid ColumnDefinitions="*, Auto">
+                            <StackPanel>
+                                <TextBlock Text="National &amp; International Compliance Scorecards" FontSize="18" FontWeight="Bold" />
+                                <TextBlock Text="Audit and benchmark host against Indian Sovereign, US Defense, US Financial, and Global Baselines" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                                <TextBlock Text="Framework Profile:" FontSize="12" VerticalAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                <ComboBox x:Name="CmbComplianceProfile" SelectedIndex="0" SelectionChanged="CmbComplianceProfile_SelectionChanged" MinWidth="260">
+                                    <ComboBoxItem Content="🌐 All Frameworks (13 Standards)" />
+                                    <ComboBoxItem Content="🇮🇳 Indian Sovereign (CERT-In, DPDP, MeitY, STQC)" />
+                                    <ComboBoxItem Content="🛡️ US Defense &amp; Military (DISA STIG, CMMC, NIST 800-171)" />
+                                    <ComboBoxItem Content="🏦 US Financial (PCI-DSS v4.0, SOX 404, GLBA)" />
+                                    <ComboBoxItem Content="🏛️ Global Baselines (ISO 27001, CIS, NIST 800-53)" />
+                                </ComboBox>
+                            </StackPanel>
+                        </Grid>
                         <ListView x:Name="ListCompliance" SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -304,11 +349,18 @@
                                         <Grid ColumnDefinitions="*, Auto">
                                             <StackPanel Spacing="6">
                                                 <TextBlock Text="{Binding StandardTitle}" FontWeight="Bold" FontSize="14" />
-                                                <TextBlock Text="{Binding PassedControls}" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
-                                                <ProgressBar Value="{Binding CompliancePercentage}" Maximum="100" Width="300" HorizontalAlignment="Left" />
+                                                <StackPanel Orientation="Horizontal" Spacing="4">
+                                                    <TextBlock Text="{Binding PassedControls}" FontSize="12" Foreground="#34D399" FontWeight="SemiBold" />
+                                                    <TextBlock Text="/" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                                    <TextBlock Text="{Binding TotalControls}" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                                    <TextBlock Text=" Controls Compliant (" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                                    <TextBlock Text="{Binding FailedControls}" FontSize="12" Foreground="#F87171" FontWeight="SemiBold" />
+                                                    <TextBlock Text=" Non-Compliant)" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                                </StackPanel>
+                                                <ProgressBar Value="{Binding CompliancePercentage}" Maximum="100" Width="320" HorizontalAlignment="Left" />
                                             </StackPanel>
                                             <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                                                <TextBlock Text="{Binding CompliancePercentage}" FontSize="24" FontWeight="Bold" Foreground="#38BDF8" />
+                                                <TextBlock Text="{Binding CompliancePercentage}" FontSize="26" FontWeight="Bold" Foreground="#38BDF8" />
                                                 <TextBlock Text=" %" FontSize="18" FontWeight="Bold" Foreground="#38BDF8" VerticalAlignment="Bottom" />
                                             </StackPanel>
                                         </Grid>

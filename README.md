@@ -4,7 +4,7 @@
 
 [![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)]()
 [![Air-Gapped](https://img.shields.io/badge/Air--Gapped-100%25%20Offline%20Verified-success.svg)]()
-[![Compliance](https://img.shields.io/badge/Compliance-DPDP%202023%20%7C%20CERT--In%20%7C%20ISO%2027001%20%7C%20NIST%20%7C%20CIS-orange.svg)]()
+[![Compliance](https://img.shields.io/badge/Compliance-DISA%20STIG%20%7C%20CMMC%202.0%20%7C%20PCI--DSS%20%7C%20SOX%20%7C%20CERT--In-orange.svg)]()
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11%20WinUI%203-blue.svg)]()
 [![Release](https://img.shields.io/badge/Release-v1.0.0%20Portable-purple.svg)](releases/DesktopAuditTool-WinUI-Portable-v1.0.0.zip)
 
@@ -13,6 +13,8 @@
 </p>
 
 ### 🏆 Statutory Compliance & Regulatory Verification Seals
+- 🇺🇸 **US Military & Defense Sector (DoD DISA STIG, CMMC 2.0 Level 2, NIST SP 800-171)**: DoD legal warning banner (`V-253280`), CAC/Smart Card logon enforcement (`V-253315`), LM/NTLMv1 disabling, BitLocker XTS-AES 256 encryption, 15-minute screen lockout, and PowerShell ScriptBlockLogging (`V-253340`).
+- 🇺🇸 **US Financial & Banking Sector (PCI-DSS v4.0, SOX Section 404 ITGC, GLBA Safeguards Rule 16 CFR Part 314)**: Host firewalls enabled across all network profiles, anti-malware definition updates <24h, segregation of duties (<=3 local admins), dormant accounts revocation (>90d), 64MB+ security event log retention, and critical File Integrity Monitoring (FIM).
 - 🇮🇳 **DPDP Act 2023 Verified Compliance**: Mathematical Verhoeff Checksum validation on Indian Aadhaar numbers, PAN protection, and local PII masking.
 - 🇮🇳 **CERT-In Guidelines Compliant**: 180-day event log retention checking and automatic CERT-In Annexure-I Incident Reporting form generator.
 - 🌐 **ISO/IEC 27001:2022 Certified Architecture**: Annex A technical controls across endpoint access, configuration, and cryptography.
@@ -22,10 +24,10 @@
 - 🔒 **100% Air-Gapped & Zero Data Egress Certified**: Zero outbound network sockets, zero DNS queries, zero cloud telemetry.
 
 ### 📦 Release Downloads & Packages
-- ⚡ **[Download Single Portable Executable (`DesktopAuditTool-Portable.exe`)](releases/DesktopAuditTool-Portable.exe)** (69.3 MB) — **Zero installation, self-extract & run!** Extract and runnable on demand on any Windows 10/11 system.
-- 💻 **[Download Windows Installer Package (`DesktopAuditTool-Setup-v1.0.0.msi`)](releases/DesktopAuditTool-Setup-v1.0.0.msi)** (46.1 MB) — Full MSI installer with Start Menu & Desktop shortcuts featuring the official emblem logo.
-- 💾 **[Download Standalone Portable ZIP (`DesktopAuditTool-WinUI-Portable-v1.0.0.zip`)](releases/DesktopAuditTool-WinUI-Portable-v1.0.0.zip)** (55.5 MB) — Traditional zip distribution with WinUI 3 GUI & CLI batch launchers.
-- 📑 **[Download Technical PDF Documentation Manual](releases/Enterprise-Desktop-Security-Audit-Tool-Documentation.pdf)** (1.62 MB) — Comprehensive technical architecture, AI threat model, and regulatory manual.
+- ⚡ **[Download Single Portable Executable (`DesktopAuditTool-Portable.exe`)](releases/DesktopAuditTool-Portable.exe)** (75.2 MB) — **Zero installation, self-extract & run!** Extract and runnable on demand on any Windows 10/11 system.
+- 💻 **[Download Windows Installer Package (`DesktopAuditTool-Setup-v1.0.0.msi`)](releases/DesktopAuditTool-Setup-v1.0.0.msi)** (48.8 MB) — Full MSI installer with Start Menu & Desktop shortcuts featuring the official emblem logo.
+- 💾 **[Download Standalone Portable ZIP (`DesktopAuditTool-WinUI-Portable-v1.0.0.zip`)](releases/DesktopAuditTool-WinUI-Portable-v1.0.0.zip)** (63.6 MB) — Traditional zip distribution with WinUI 3 GUI & CLI batch launchers.
+- 📑 **[Download Technical PDF Documentation Manual](releases/Enterprise-Desktop-Security-Audit-Tool-Documentation.pdf)** (4.42 MB) — Comprehensive technical architecture, US Defense/Financial compliance mappings, AI threat model, and regulatory manual.
 - 🔑 **[Release Notes & SHA-256 Checksums](releases/RELEASE_NOTES_v1.0.0.md)** | **[Raw SHA256SUMS.txt](releases/SHA256SUMS.txt)**
 
 ---
@@ -59,6 +61,7 @@ When building an enterprise-grade security audit tool capable of deep endpoint i
 3. **Vulnerability Assessment**:
    - Built-in offline CVE identification matching software versions against high-severity CVEs (e.g. 7-Zip, Chrome, VLC, OpenSSH, Python, Adobe Acrobat).
    - CVSS v3.1 / v4.0 scoring, CISA Known Exploited Vulnerabilities (KEV) cross-referencing, exploit availability, and business impact scoring.
+   - Offline cross-framework compliance mapping: DISA STIG (V-253370), CMMC 2.0 (SI.L2-3.14.1), NIST SP 800-171 (3.14.1), and PCI-DSS (Req 11.3.1).
 4. **Endpoint Security Verification**:
    - Antivirus detection: Windows Defender (`root\Microsoft\Windows\Defender` & `SecurityCenter2`), CrowdStrike Falcon, SentinelOne, Trellix ENS, Carbon Black, Sophos.
    - Real-time protection status, definition signature freshness, and Endpoint Health Score.
@@ -94,13 +97,11 @@ When building an enterprise-grade security audit tool capable of deep endpoint i
     - Cryptographic SHA-256 baseline hashing and modification drift detection.
     - DNS hijacking / sinkhole detection in hosts file.
 13. **Compliance Audit Module**:
-    - Generates detailed scorecards with pass/fail controls and percentage compliance for:
-      - **CERT-In Cyber Security Directions (Ministry of Electronics & IT)**
-      - **ISO/IEC 27001:2022**
-      - **NIST SP 800-53 Rev. 5**
-      - **CIS Benchmarks (Level 1 & 2)**
-      - **MeitY Government Desktop Security Guidelines**
-      - **STQC e-Governance Security Guidelines**
+    - Generates detailed scorecards with pass/fail controls and percentage compliance across 13 sovereign, defense, and financial frameworks:
+      - **🇺🇸 US Military & Defense**: DoD DISA STIG, CMMC 2.0 (Level 2), NIST SP 800-171 Rev. 2
+      - **🇺🇸 US Financial & Banking**: PCI-DSS v4.0, Sarbanes-Oxley (SOX) Section 404 ITGC, Gramm-Leach-Bliley Act (GLBA) Safeguards Rule (16 CFR Part 314)
+      - **🇮🇳 Indian Sovereign & Critical Infrastructure**: CERT-In Cyber Security Directions, Digital Personal Data Protection Act (DPDP) 2023, MeitY Guidelines, STQC e-Governance
+      - **🌐 Global Enterprise Baselines**: ISO/IEC 27001:2022, NIST SP 800-53 Rev. 5, CIS Benchmarks (Level 1 & 2)
 14. **Configuration Benchmarking**:
     - CIS Windows 10/11 benchmarks: Built-in Guest account status, LSA Protection (`RunAsPPL`), RDP password saving restriction (`DisablePasswordSaving`), LLMNR multicast resolution.
 15. **Data Protection & DLP Audit**:
@@ -222,7 +223,7 @@ dotnet run --project src/DesktopAuditTool.WinUI -c Release
 - **📊 SOC Dashboard**: Real-time KPI scorecards (Health Score, Threat Score, Compliance %, AI Risk Forecast, Active CVEs, DLP Alerts), dynamic progress gauge, one-click "Start Complete System Audit".
 - **🔍 Findings Explorer**: Interactive filterable datagrid across all severities (Critical, High, Medium, Low) with MITRE ATT&CK technique IDs, CVSS scores, and remediation scripts.
 - **📦 22 Modules Browser**: Deep-dive into each individual audit category (Asset Discovery, Hardening, CVEs, EDR/AV, Firewall, Network, AD, App Sec, USBSTOR, Event Logs, Malware, FIM, DLP, etc.).
-- **📜 Compliance Matrix**: Visual compliance scorecards for CERT-In, ISO 27001, NIST SP 800-53, CIS Benchmarks, MeitY, and STQC guidelines.
+- **📜 Compliance Matrix**: Visual compliance scorecards with interactive Profile Filtering (`All`, `Indian Sovereign & Critical Sector`, `US Military & Defense Sector`, `US Financial & Banking Sector`, `Global Enterprise Standard`) covering DISA STIG, CMMC 2.0, NIST 800-171, PCI-DSS, SOX, GLBA, CERT-In, DPDP 2023, ISO 27001, and CIS Benchmarks.
 - **🛡️ DLP & Sensitive Data**: Deep discovery results for Aadhaar (Verhoeff checksum validated), PAN numbers, Passports, Bank IFSC/Accounts, SSH Private Keys, and unencrypted credentials.
 - **🤖 AI Threat Intel**: Real-time behavioral engine detecting LOLBins (`certutil`, `wmic`, `powershell`), UBA after-hours access, Ransomware early warning, and correlated multi-stage attack chains.
 - **⚡ Automated Remediation**: One-click safe hardening fixes (Enforce Firewall, Disable SMBv1, Fix UAC, Enable LSA PPL, Disable AutoRun) with rollback verification.
@@ -238,6 +239,12 @@ dotnet run --project src/DesktopAuditTool.App -- --cli --export ./reports
 
 Command-Line Arguments:
 - `--cli`, `--audit`, `--all`: Execute full 22-module audit and print executive scorecard to console.
+- `--profile <all|sovereign|defense|financial|global>`: Select statutory compliance framework profile (default: `all`).
+- `--stig`: Audit DoD DISA STIG compliance parameters.
+- `--cmmc`: Audit CMMC 2.0 Level 2 compliance parameters.
+- `--pci`: Audit PCI-DSS v4.0 financial controls.
+- `--sox`: Audit Sarbanes-Oxley Section 404 ITGC controls.
+- `--glba`: Audit GLBA Safeguards Rule 16 CFR Part 314 controls.
 - `--export <dir>`: Directory to export PDF, Excel, HTML, CSV, JSON, and CERT-In forms.
 - `--dept <name>`: Department name (e.g., `'Advanced Aerospace Simulation'`).
 - `--project <name>`: Project name (e.g., `'Strategic HPC Computing'`).

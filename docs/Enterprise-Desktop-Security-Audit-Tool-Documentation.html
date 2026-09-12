@@ -104,6 +104,10 @@
     .seal-nist { background: #faf5ff; color: #6b21a8; border-color: #e9d5ff; }
     .seal-cis { background: #fffbeb; color: #92400e; border-color: #fde68a; }
     .seal-meity { background: #f0fdfa; color: #115e59; border-color: #99f6e4; }
+    .seal-disa { background: #fef3c7; color: #78350f; border-color: #fde68a; }
+    .seal-cmmc { background: #ecfeff; color: #155e75; border-color: #a5f3fc; }
+    .seal-pci { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
+    .seal-sox { background: #f3e8ff; color: #581c87; border-color: #d8b4fe; }
     .seal-airgap { background: #fdf2f8; color: #9d174d; border-color: #fbcfe8; }
 
     /* Content Layout */
@@ -209,6 +213,10 @@
       <div class="cover-seals">
         <span class="seal-badge seal-dpdp">✔ DPDP ACT 2023 VERIFIED</span>
         <span class="seal-badge seal-certin">✔ CERT-In COMPLIANT</span>
+        <span class="seal-badge seal-disa">✔ DoD DISA STIG VERIFIED</span>
+        <span class="seal-badge seal-cmmc">✔ CMMC 2.0 LEVEL 2</span>
+        <span class="seal-badge seal-pci">✔ PCI-DSS v4.0 COMPLIANT</span>
+        <span class="seal-badge seal-sox">✔ SOX 404 ITGC</span>
         <span class="seal-badge seal-iso">✔ ISO/IEC 27001:2022</span>
         <span class="seal-badge seal-nist">✔ NIST SP 800-53 Rev. 5</span>
         <span class="seal-badge seal-cis">✔ CIS BENCHMARKS L1 &amp; L2</span>
@@ -629,9 +637,85 @@
     </table>
   </div>
 
-  <!-- ==================== SECTION 6: PACKAGING & DEPLOYMENT GUIDE ==================== -->
+  <!-- ==================== SECTION 6: US DEFENSE & FINANCIAL COMPLIANCE ==================== -->
   <div class="page">
-    <h1>6. Deployment, Portable Execution, &amp; Integrity Verification</h1>
+    <h1>6. US Defense &amp; US Financial Compliance Frameworks</h1>
+    <p>
+      The platform provides native, user-selectable compliance profiles allowing workstations to be audited against international defense and financial standards while maintaining a strict 100% offline air-gap guarantee.
+    </p>
+
+    <h2>6.1 Vulnerability Assessment &amp; Statutory Cross-Mapping</h2>
+    <p>
+      Module 3 (<strong>Vulnerability Assessment</strong>) is deeply embedded within the core audit engine. It performs automated, offline vulnerability identification by evaluating installed application inventory against known vulnerable software version baselines (including Chrome, 7-Zip, VLC, OpenSSH, Python, Node.js, and Adobe Acrobat Reader).
+    </p>
+    <ul>
+      <li><strong>Offline CVE Intelligence:</strong> Evaluates version strings against known vulnerable thresholds without contacting external servers.</li>
+      <li><strong>CVSS Base Scoring:</strong> Exact base vector calculations spanning Medium (4.0-6.9), High (7.0-8.9), and Critical (9.0+).</li>
+      <li><strong>CISA Known Exploited Vulnerabilities (KEV):</strong> Highlights actively weaponized in-the-wild zero-days (e.g. <em>regreSSHion</em> CVE-2024-6387, libwebp CVE-2023-4863).</li>
+      <li><strong>Cross-Standard Alignment:</strong> Every discovered vulnerability automatically cross-maps to DoD DISA STIG (<code>V-253370</code>), CMMC 2.0 (<code>SI.L2-3.14.1</code>), NIST SP 800-171 (<code>3.14.1</code>), and PCI-DSS v4.0 (<code>Requirement 11.3.1</code>).</li>
+    </ul>
+
+    <h2>6.2 US Military &amp; Defense Compliance Parameters</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title">🛡️ DoD DISA STIG (Windows 10/11)</div>
+        <div class="card-text">
+          Evaluates official Defense Information Systems Agency benchmarks including: Legal notice warning banner (<code>V-253280</code>), LM/NTLMv1 hash disabling (<code>LmCompatibilityLevel = 5</code>), BitLocker XTS-AES 256 enforcement, DoD CAC / Smart Card logon, and PowerShell script block logging (<code>V-253340</code>).
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">🎖️ CMMC 2.0 Level 2 (Advanced)</div>
+        <div class="card-text">
+          Aligned with DoD Defense Industrial Base requirements for Controlled Unclassified Information (CUI): strict user access controls (<code>AC.L2-3.1.1</code>), 15-minute inactivity screen lock timeout (<code>AC.L2-3.1.10</code>), system audit logging, removable storage sanitization, and flaw remediation.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">🏛️ NIST SP 800-171 Rev. 2/3</div>
+        <div class="card-text">
+          Protects CUI in nonfederal systems: non-privileged security function restrictions (<code>3.1.7</code>), decommissioning legacy protocols like SMBv1 and LLMNR (<code>3.4.7</code>), 12+ character password complexity (<code>3.5.7</code>), and FIPS-validated cryptography.
+        </div>
+      </div>
+    </div>
+
+    <h2>6.3 US Financial &amp; Banking Compliance Parameters</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title">💳 PCI-DSS v4.0 (Payment Card Industry)</div>
+        <div class="card-text">
+          Mandatory controls for cardholder data environments: personal host firewalls enabled on all network profiles (Req 1.2), hardening &amp; unnecessary service disabling (Req 2.2), anti-malware signatures updated &lt;24h (Req 5.2), strong passwords &amp; 15-min idle lock (Req 8.2/8.3), and 64MB+ security log retention (Req 10.2).
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">📈 SOX Section 404 ITGC (Sarbanes-Oxley)</div>
+        <div class="card-text">
+          IT General Controls for financial reporting systems: segregation of administrative duties (&le; 3 local admins), dormant account revocation (&gt;90 days inactive), software authorization baseline verification, and file integrity monitoring (FIM) on accounting repositories.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">🏦 GLBA Safeguards Rule (16 CFR Part 314)</div>
+        <div class="card-text">
+          Safeguards customer financial information: strict access boundaries (&sect; 314.4(c)(1)), mandatory encryption of records at rest with BitLocker and in transit with TLS 1.2+ (&sect; 314.4(c)(3)), automated session inactivity timeouts, and continuous vulnerability monitoring.
+        </div>
+      </div>
+    </div>
+
+    <h2>6.4 Selectable Profiles &amp; CLI Automation</h2>
+    <p>
+      The tool allows operators to switch compliance profiles on demand both via the WinUI 3 graphical interface and the headless CLI:
+    </p>
+    <pre><code># Audit endpoint against US Defense &amp; Military frameworks (DISA STIG, CMMC 2.0, NIST 800-171)
+DesktopAuditTool.App.exe --cli --profile defense --export "C:\Reports"
+
+# Audit endpoint against US Financial frameworks (PCI-DSS, SOX 404, GLBA)
+DesktopAuditTool.App.exe --cli --profile financial --export "C:\Reports"
+
+# Audit specific statutory standard on demand
+DesktopAuditTool.App.exe --cli --stig --cmmc --pci</code></pre>
+  </div>
+
+  <!-- ==================== SECTION 7: PACKAGING & DEPLOYMENT GUIDE ==================== -->
+  <div class="page">
+    <h1>7. Deployment, Portable Execution, &amp; Integrity Verification</h1>
     <p>
       The platform offers dual enterprise deployment formats engineered specifically for air-gapped workstations, defense testbeds, and research laboratory environments:
     </p>

@@ -56,6 +56,12 @@ Options:
   --gui                   Launch interactive Standalone Desktop GUI (Default)
   --audit, --cli, --all   Run headless command-line audit across all 22 modules
   --export <directory>    Directory path to export PDF, Excel, HTML, CSV, JSON, CERT-In
+  --profile <profile>     Compliance profile (all, sovereign, defense, financial, global)
+  --stig                  Enable US DoD DISA STIG audit
+  --cmmc                  Enable CMMC 2.0 Level 2 audit
+  --pci                   Enable PCI-DSS v4.0 audit
+  --sox                   Enable SOX Section 404 ITGC audit
+  --glba                  Enable GLBA Safeguards Rule audit
   --classification <tier> Asset classification (Unclassified, Restricted, Confidential, Secret, TopSecret)
   --dept <name>           Department name (e.g. 'Cyber Systems')
   --project <name>        Project title (e.g. 'Strategic Computing')
@@ -73,10 +79,26 @@ Options:
         var threatEngine = new AiThreatEngine();
         var reportManager = new ReportManager();
 
+        var profileArg = GetArgumentValue(args, "--profile")?.ToLowerInvariant();
+        var profile = profileArg switch
+        {
+            "defense" or "military" => ComplianceProfile.UsDefense,
+            "financial" or "finance" or "bank" => ComplianceProfile.UsFinancial,
+            "sovereign" or "india" => ComplianceProfile.IndianSovereign,
+            "global" => ComplianceProfile.GlobalEnterprise,
+            _ => ComplianceProfile.All
+        };
+
+        if (args.Contains("--stig") || args.Contains("--cmmc"))
+            profile |= ComplianceProfile.UsDefense;
+        if (args.Contains("--pci") || args.Contains("--sox") || args.Contains("--glba"))
+            profile |= ComplianceProfile.UsFinancial;
+
         var ctx = new AuditContext
         {
             UserRole = RbacRole.Administrator,
             AssetClassification = AssetClassification.Restricted,
+            SelectedComplianceProfile = profile,
             Department = GetArgumentValue(args, "--dept") ?? "CSIR Strategic Systems",
             ProjectName = GetArgumentValue(args, "--project") ?? "High Performance Computing Security"
         };
@@ -99,13 +121,26 @@ Options:
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine($"  * Threat Score:              {report.Scores.ThreatScore,5:F1} / 100  (Active Threat Exposure)");
         Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine($"  * Compliance Score:          {report.Scores.ComplianceScore,5:F1} %      (CERT-In, ISO 27001, CIS)");
+        Console.WriteLine($"  * Compliance Score:          {report.Scores.ComplianceScore,5:F1} %      (Aggregate Compliance)");
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine($"  * AI Risk Compromise Index:  {report.Scores.AiRiskScore,5:F1} %      (Forecast Probability)");
         Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine($"  * Insider Threat Score:      {report.Scores.InsiderThreatScore,5:F1} %      (Data Leak Exposure)");
         Console.ForegroundColor = ConsoleColor.DarkYellow;
         Console.WriteLine($"  * Ransomware Exposure:       {report.Scores.RansomwareProbability,5:F1} %      (Propagation Vulnerability)");
+        Console.ResetColor();
+        Console.WriteLine(new string('-', 78));
+
+        // Display Compliance Standards
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("\n  INSTITUTIONAL COMPLIANCE POSTURE:");
+        foreach (var sc in report.ComplianceScorecards)
+        {
+            var badge = sc.CompliancePercentage >= 80 ? "✔ PASS" : "▲ AUDIT";
+            var color = sc.CompliancePercentage >= 80 ? ConsoleColor.Green : ConsoleColor.Yellow;
+            Console.ForegroundColor = color;
+            Console.WriteLine($"   [{badge}] {sc.Standard,-14} {sc.CompliancePercentage,5:F1}% ({sc.PassedControls}/{sc.TotalControls} controls compliant)");
+        }
         Console.ResetColor();
         Console.WriteLine(new string('-', 78));
 

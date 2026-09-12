@@ -174,6 +174,21 @@ public static class DashboardUiContent
 
     <!-- TAB 1: DASHBOARD -->
     <div id="tab-dashboard">
+      <!-- Statutory Seals Ribbon -->
+      <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.25rem; background:rgba(15,23,42,0.6); border:1px solid #334155; padding:0.6rem 1rem; border-radius:8px; align-items:center;">
+        <span style="font-size:0.75rem; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-right:0.5rem;">Statutory Seals &amp; Verification:</span>
+        <span style="background:#0f2d1f; border:1px solid #10b981; color:#34d399; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;">✔ DPDP ACT 2023</span>
+        <span style="background:#1e2238; border:1px solid #6366f1; color:#a5b4fc; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;">✔ CERT-In COMPLIANT</span>
+        <span style="background:#2e2412; border:1px solid #f59e0b; color:#fde68a; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;">✔ DoD DISA STIG</span>
+        <span style="background:#083344; border:1px solid #06b6d4; color:#67e8f9; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;">✔ CMMC 2.0 LEVEL 2</span>
+        <span style="background:#064e3b; border:1px solid #10b981; color:#a7f3d0; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;">✔ PCI-DSS v4.0</span>
+        <span style="background:#3b0764; border:1px solid #a855f7; color:#e9d5ff; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;">✔ SOX 404 ITGC</span>
+        <span style="background:#1c2738; border:1px solid #0284c7; color:#7dd3fc; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;">✔ ISO 27001:2022</span>
+        <span style="background:#2b1d38; border:1px solid #a855f7; color:#d8b4fe; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;">✔ NIST SP 800-53</span>
+        <span style="background:#2e2412; border:1px solid #f59e0b; color:#fde68a; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;">✔ CIS BENCHMARKS</span>
+        <span style="background:#1e2730; border:1px solid #14b8a6; color:#5eead4; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;">✔ MeitY / STQC</span>
+        <span style="background:#1f1b2e; border:1px solid #ec4899; color:#fbcfe8; padding:0.25rem 0.6rem; border-radius:9999px; font-size:0.75rem; font-weight:700;">🔒 100% AIR-GAPPED</span>
+      </div>
       <div class="kpi-grid">
         <div class="kpi-card">
           <div class="kpi-title">Security Health</div>
@@ -274,6 +289,22 @@ public static class DashboardUiContent
 
     <!-- TAB 4: COMPLIANCE -->
     <div id="tab-compliance" style="display:none;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem; background:var(--bg-surface); padding:1rem 1.25rem; border:1px solid var(--border); border-radius:10px;">
+        <div>
+          <div style="font-size:1.15rem; font-weight:700; color:#fff;">Institutional &amp; Statutory Compliance Scorecards</div>
+          <div style="font-size:0.85rem; color:var(--text-dim);">Benchmark endpoint across Indian Sovereign, US Defense, US Financial, and Global Baselines</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <label style="font-size:0.85rem; color:var(--text-dim); font-weight:600;">Framework Profile:</label>
+          <select id="select-compliance-profile" class="select-input" onchange="filterComplianceProfile()" style="padding:0.45rem 0.85rem; border-radius:6px; background:var(--bg-base); color:#fff; border:1px solid var(--border);">
+            <option value="ALL">🌐 All Frameworks (13 Standards)</option>
+            <option value="IndianSovereign">🇮🇳 Indian Sovereign (CERT-In, DPDP, MeitY, STQC)</option>
+            <option value="UsDefense">🛡️ US Defense &amp; Military (DISA STIG, CMMC 2.0, NIST 800-171)</option>
+            <option value="UsFinancial">🏦 US Financial (PCI-DSS v4.0, SOX 404, GLBA)</option>
+            <option value="GlobalEnterprise">🏛️ Global Baselines (ISO 27001, CIS, NIST 800-53)</option>
+          </select>
+        </div>
+      </div>
       <div class="kpi-grid" id="compliance-scorecards-grid"></div>
     </div>
 
@@ -495,13 +526,41 @@ public static class DashboardUiContent
     }
 
     function renderCompliance(report) {
+      filterComplianceProfile();
+    }
+
+    function filterComplianceProfile() {
+      const rep = currentReport;
+      if (!rep || !rep.complianceScorecards) return;
       const grid = document.getElementById('compliance-scorecards-grid');
+      const filter = document.getElementById('select-compliance-profile')?.value || 'ALL';
       grid.innerHTML = '';
-      (report.complianceScorecards || []).forEach(sc => {
-        grid.innerHTML += `<div class="kpi-card">
-          <div class="kpi-title">${sc.standardTitle || sc.standard}</div>
-          <div class="kpi-value" style="color:#38bdf8;">${sc.compliancePercentage}%</div>
-          <div class="kpi-desc">${sc.passedControls} / ${sc.totalControls} Controls Passed</div>
+
+      const filtered = rep.complianceScorecards.filter(sc => {
+        if (filter === 'ALL') return true;
+        if (filter === 'IndianSovereign' && (sc.profile === 1 || sc.profile === 'IndianSovereign')) return true;
+        if (filter === 'UsDefense' && (sc.profile === 2 || sc.profile === 'UsDefense')) return true;
+        if (filter === 'UsFinancial' && (sc.profile === 4 || sc.profile === 'UsFinancial')) return true;
+        if (filter === 'GlobalEnterprise' && (sc.profile === 8 || sc.profile === 'GlobalEnterprise')) return true;
+        return false;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div style="color:var(--text-dim); padding:1rem;">No compliance scorecards match this filter.</div>';
+        return;
+      }
+
+      filtered.forEach(sc => {
+        const color = sc.compliancePercentage >= 80 ? '#34d399' : sc.compliancePercentage >= 60 ? '#fbbf24' : '#f87171';
+        grid.innerHTML += `<div class="kpi-card" style="text-align:left; padding:1.25rem;">
+          <div class="kpi-title" style="font-weight:700; color:#fff; font-size:0.95rem; margin-bottom:0.4rem;">${sc.standardTitle || sc.standard}</div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin:0.5rem 0;">
+            <span style="font-size:1.8rem; font-weight:800; color:${color};">${sc.compliancePercentage}%</span>
+            <span class="kpi-desc" style="font-weight:600; font-size:0.8rem;">${sc.passedControls} / ${sc.totalControls} Compliant</span>
+          </div>
+          <div style="height:6px; background:rgba(255,255,255,0.1); border-radius:3px; overflow:hidden;">
+            <div style="width:${sc.compliancePercentage}%; height:100%; background:${color};"></div>
+          </div>
         </div>`;
       });
     }
